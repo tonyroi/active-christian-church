@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Active Christian Church - Videos</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Welcome to Active Christian Church</h1>
+        <p>We welcome all members and new visitors to our church website!</p>
+    </header>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="videos.html">Videos</a>
+        <a href="memory-verse.html">Memory Verse of the Day</a>
+        <a href="quotes.html">Quotes</a>
+        <a href="announcements.html">Announcements</a>
+    </nav>
+    <div class="content">
+        <h2>Videos</h2>
+        <form class="upload-form" action="#" method="post" enctype="multipart/form-data">
+            <label for="video-upload">Upload Video:</label>
+            <input type="file" id="video-upload" name="video-upload" accept="video/*">
+            <input type="submit" value="Upload">
+        </form>
+        <h3>Uploaded Videos:</h3>
+        <!-- Display uploaded videos here -->
+    </div>
+    <script>
+        document.querySelector('form.upload-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const fileInput = document.getElementById('video-upload');
+            if (fileInput.files.length > 0) {
+                const videoContainer = document.createElement('div');
+                const videoElement = document.createElement('video');
+                videoElement.src = URL.createObjectURL(fileInput.files[0]);
+                videoElement.controls = true;
+                videoElement.width = 600;
+                videoContainer.appendChild(videoElement);
+                document.querySelector('.content').appendChild(videoContainer);
+            }
+        });
+    </script>
+</body>
+</html>
